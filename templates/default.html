@@ -1,14 +1,15 @@
 {{> header.html}}
 
-<h1>Albums</h1>
+<h1>Bikes</h1>
 
-<div class="albums">
-{{#albums}}
+<div class="bikes">
+{{#bikes}}
     <div>
-        <h2>{{title}}</h2>
-        <p>{{artist}}</p>
+        <span>🚲</span>
+        <h2><a href="/details/{{id}}">{{name}}</a></h2>
+        <p>{{type}}</p>
     </div>
-{{/albums}}
+{{/bikes}}
 </div>
 
 {{> footer.html}}
