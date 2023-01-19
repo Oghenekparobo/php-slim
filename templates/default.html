@@ -1,15 +1,7 @@
 {{> header.html}}
 
-<h1>Bikes</h1>
+<h1>Welcome</h1>
 
-<div class="bikes">
-{{#bikes}}
-    <div>
-        <span>🚲</span>
-        <h2><a href="/details/{{id}}">{{name}}</a></h2>
-        <p>{{type}}</p>
-    </div>
-{{/bikes}}
-</div>
+<p>Welcome to the member's area. You are logged in as {{user}}. <a href="/logout">Log out</a>.</p>
 
 {{> footer.html}}

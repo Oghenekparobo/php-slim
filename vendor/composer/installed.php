@@ -1,9 +1,9 @@
 <?php return array(
     'root' => array(
         'name' => '__root__',
-        'pretty_version' => '1.0.0+no-version-set',
-        'version' => '1.0.0.0',
-        'reference' => NULL,
+        'pretty_version' => 'dev-main',
+        'version' => 'dev-main',
+        'reference' => '0cf284714c1f93a6da0428f4f34496cacf3eed62',
         'type' => 'library',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
@@ -11,11 +11,20 @@
     ),
     'versions' => array(
         '__root__' => array(
-            'pretty_version' => '1.0.0+no-version-set',
-            'version' => '1.0.0.0',
-            'reference' => NULL,
+            'pretty_version' => 'dev-main',
+            'version' => 'dev-main',
+            'reference' => '0cf284714c1f93a6da0428f4f34496cacf3eed62',
             'type' => 'library',
             'install_path' => __DIR__ . '/../../',
+            'aliases' => array(),
+            'dev_requirement' => false,
+        ),
+        'bryanjhv/slim-session' => array(
+            'pretty_version' => '4.1.2',
+            'version' => '4.1.2.0',
+            'reference' => '475accbe38622199fa1729f3caf5a38af2cda8a2',
+            'type' => 'library',
+            'install_path' => __DIR__ . '/../bryanjhv/slim-session',
             'aliases' => array(),
             'dev_requirement' => false,
         ),

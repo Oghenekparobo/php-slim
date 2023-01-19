@@ -17,25 +17,30 @@ $container->set('templating', function() {
     ]);
 });
 
+$container->set('session', function() {
+    return new \SlimSession\Helper();
+  });
+
 AppFactory::setContainer($container);
 
 $app = AppFactory::create();
-
-$app->get('/', '\App\Controller\SearchController:default');
-$app->get('/search', '\App\Controller\SearchController:search');
-$app->any('/form', '\App\Controller\SearchController:form');
-$app->get('/api', '\App\Controller\ApiController:search');
-$app->get('/bikes', '\App\Controller\ShopController:default');
-$app->get('/details/{id:[0-9]+}', '\App\Controller\ShopController:details');
+$app->add(new \Slim\Middleware\Session);
 
 
-$errorMiddleware = $app->addErrorMiddleware(true, true, true);
+$app->any('/', '\App\Controller\AuthController:login');
+$app->get('/logout', '\App\Controller\AuthController:logout');
+// $app->get('/secure', '\App\Controller\SecureController:default')->add(new \App\Middleware\Authenticate($app->getContainer()->get('session')));
+// $app->get('/', '\App\Controller\SearchController:default');
+// $app->get('/search', '\App\Controller\SearchController:search');
+// $app->any('/form', '\App\Controller\SearchController:form');
+// $app->get('/api', '\App\Controller\ApiController:search');
+// $app->get('/bikes', '\App\Controller\ShopController:default');
+// $app->get('/details/{id:[0-9]+}', '\App\Controller\ShopController:details');
 
-$errorMiddleware->setErrorHandler(
-    Slim\Exception\HttpNotFoundException::class,
-    function (Psr\Http\Message\ServerRequestInterface $request) use ($container) {
-        $controller = new App\Controller\ExceptionController($container);
-        return $controller->notFound($request);
-    });
+$app->group('/secure', function($app) {
+    $app->get('', '\App\Controller\SecureController:default');
+    $app->get('/status', '\App\Controller\SecureController:status');
+})->add(new \App\Middleware\Authenticate($app->getContainer()->get('session')));
+
 
 $app->run();

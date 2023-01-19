@@ -21,4 +21,5 @@ return array(
     'FastRoute\\' => array($vendorDir . '/nikic/fast-route/src'),
     'DI\\' => array($vendorDir . '/php-di/php-di/src'),
     'App\\' => array($baseDir . '/src'),
+    '' => array($vendorDir . '/bryanjhv/slim-session/src'),
 );
